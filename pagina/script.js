@@ -1,23 +1,27 @@
 const projects = [
     {
-        title: "🎮 TCC - Jogos",
-        description: "Trabalho de Conclusão de Curso sobre desenvolvimento de jogos",
-        link: "#"
+        title: "🌐 Site TCC",
+        description: "Site do Trabalho de Conclusão de Curso",
+        type: "site",
+        images: [
+            "../imagens/indexsite.png",
+            "../imagens/loginsite.png",
+            "../imagens/jogossite.png",
+            "../imagens/codigosite.png",
+            "../imagens/redefinirsenhasite.png",
+            "../imagens/suportesite.png"
+        ]
     },
     {
-        title: "⭕ Jogo da Velha",
-        description: "Jogo da velha interativo com placar e animações",
-        link: "jogo-da-velha/index.html"
-    },
-    {
-        title: "🎬 Meu Cinema",
-        description: "Catálogo dos meus filmes, séries e animes favoritos",
-        link: "meu-cinema/index.html"
-    },
-    {
-        title: "🎨 Portfolio Criativo",
-        description: "Site de portfólio com animações e design moderno",
-        link: "#"
+        title: "📱 App TCC",
+        description: "Aplicativo do Trabalho de Conclusão de Curso",
+        type: "app",
+        images: [
+            "../imagens/categoriasapp.png",
+            "../imagens/jogoapp.png",
+            "../imagens/perfilapp.png",
+            "../imagens/pixapp.png"
+        ]
     }
 ];
 
@@ -107,17 +111,47 @@ function renderProjects() {
     projects.forEach(project => {
         const card = document.createElement('div');
         card.className = 'project-card';
-        if (project.link && project.link !== '#') {
-            card.style.cursor = 'pointer';
-            card.onclick = () => window.open(project.link, '_blank');
-        }
+        card.style.cursor = 'pointer';
+        card.onclick = () => showProjectImages(project);
         card.innerHTML = `
             <h3>${project.title}</h3>
             <p>${project.description}</p>
-            ${project.link && project.link !== '#' ? '<span style="color: #00ffff; font-size: 0.9rem; margin-top: 1rem; display: block;">🔗 Clique para jogar</span>' : ''}
+            <span style="color: #00ffff; font-size: 0.9rem; margin-top: 1rem; display: block;">📸 Clique para ver imagens</span>
         `;
         container.appendChild(card);
     });
+}
+
+function showProjectImages(project) {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9); z-index: 1000; display: flex;
+        align-items: center; justify-content: center; flex-direction: column;
+    `;
+    
+    const content = document.createElement('div');
+    content.style.cssText = `
+        max-width: 90%; max-height: 90%; overflow-y: auto;
+        text-align: center; padding: 20px;
+    `;
+    
+    content.innerHTML = `
+        <h2 style="color: #00ffff; margin-bottom: 20px;">${project.title}</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            ${project.images.map(img => `
+                <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="${project.title}">
+            `).join('')}
+        </div>
+        <button onclick="this.parentElement.parentElement.remove()" style="
+            margin-top: 20px; padding: 10px 20px; background: #00ffff;
+            color: #000; border: none; border-radius: 5px; cursor: pointer;
+        ">Fechar</button>
+    `;
+    
+    modal.appendChild(content);
+    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+    document.body.appendChild(modal);
 }
 
 document.getElementById('cta-btn').addEventListener('click', () => {
