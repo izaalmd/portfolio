@@ -19,13 +19,13 @@ const projects = [
     {
         title: "🎬 Meu Cinema",
         description: "Catálogo simples com filmes e séries que eu gosto",
-        cover: "imagens/tcc/meu cinema/1filmes.png",
+        cover: "imagens/tcc/meucinema/1filmes.png",
         images: [
-            "imagens/tcc/meu cinema/1filmes.png",
-            "imagens/tcc/meu cinema/2sries.png",
-            "imagens/tcc/meu cinema/3animes.png",
-            "imagens/tcc/meu cinema/4detalhes.png",
-            "imagens/tcc/meu cinema/5detalhes.png"
+            "imagens/tcc/meucinema/1filmes.png",
+            "imagens/tcc/meucinema/2sries.png",
+            "imagens/tcc/meucinema/3animes.png",
+            "imagens/tcc/meucinema/4detalhes.png",
+            "imagens/tcc/meucinema/5detalhes.png"
         ]
     },
     {
@@ -190,9 +190,10 @@ function showProjectImages(project) {
                 
                 <p style="margin-bottom: 20px;">A aplicação permite visualizar detalhes dos títulos, incluindo sinopses, avaliações e informações técnicas. Com design responsivo e navegação fluida, o catálogo oferece uma experiência agradável tanto em dispositivos móveis quanto desktop.</p>
                 
-                <p style="color: #00ffff; font-weight: bold; margin-top: 30px;">Capturas de tela do projeto:</p>
+                <p style="color: #00ffff; font-weight: bold; margin-top: 30px;">Algumas fotos do projeto:</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <h3 style="color: #fff; margin: 20px 0 10px 0;">🎬 Aplicação</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
                 ${project.images.map(img => `
                     <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="Meu Cinema">
                 `).join('')}
