@@ -17,10 +17,16 @@ const projects = [
         ]
     },
     {
-        title: "💻 Projeto 2",
-        description: "Descrição do segundo projeto",
-        cover: "https://via.placeholder.com/400x250/333/fff?text=Em+Breve",
-        images: []
+        title: "🎬 Meu Cinema",
+        description: "Catálogo simples com filmes e séries que eu gosto",
+        cover: "imagens/tcc/meu cinema/1filmes.png",
+        images: [
+            "imagens/tcc/meu cinema/1filmes.png",
+            "imagens/tcc/meu cinema/2sries.png",
+            "imagens/tcc/meu cinema/3animes.png",
+            "imagens/tcc/meu cinema/4detalhes.png",
+            "imagens/tcc/meu cinema/5detalhes.png"
+        ]
     },
     {
         title: "🎨 Projeto 3",
@@ -144,37 +150,59 @@ function showProjectImages(project) {
         text-align: center; padding: 20px;
     `;
     
-    const siteImages = project.images.filter(img => img.includes('site'));
-    const appImages = project.images.filter(img => img.includes('app'));
-    
-    content.innerHTML = `
-        <h2 style="color: #00ffff; margin-bottom: 20px;">${project.title}</h2>
-        <div style="color: #fff; text-align: left; margin-bottom: 30px; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <p style="margin-bottom: 20px;">Game Legends é uma plataforma web e mobile criada para apoiar e dar visibilidade a desenvolvedores independentes de jogos, especialmente iniciantes. O projeto conecta criadores e jogadores em um ambiente colaborativo, permitindo a publicação de jogos, avaliações gratuitas, feedbacks da comunidade e um sistema de doações diretas para financiar projetos em desenvolvimento.</p>
-            
-            <p style="margin-bottom: 20px;">Desenvolvida com arquitetura moderna e escalável, a plataforma integra frontend responsivo, backend em Spring Boot, API RESTful e aplicação mobile em Flutter, garantindo segurança, usabilidade e consistência de dados entre web e mobile. O sistema conta com autenticação segura, diferentes níveis de acesso (cliente, desenvolvedor e administrador), moderação de conteúdo, filtros avançados de busca e controle de avaliações.</p>
-            
-            <p style="margin-bottom: 20px;">Além do aspecto técnico, a Game Legends possui um forte viés social, promovendo inclusão, inovação e democratização no mercado de games, alinhando-se aos Objetivos de Desenvolvimento Sustentável (ODS 9). O projeto busca reduzir barreiras enfrentadas por desenvolvedores indie e fortalecer a relação entre quem cria e quem joga.</p>
-            
-            <p style="color: #00ffff; font-weight: bold; margin-top: 30px;">Algumas fotos do projeto:</p>
-        </div>
-        <h3 style="color: #fff; margin: 20px 0 10px 0;">🌐 Site</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
-            ${siteImages.map(img => `
-                <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="Site Game Legends">
-            `).join('')}
-        </div>
-        <h3 style="color: #fff; margin: 20px 0 10px 0;">📱 App</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            ${appImages.map(img => `
-                <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="App Game Legends">
-            `).join('')}
-        </div>
-        <button onclick="this.parentElement.parentElement.remove()" style="
-            margin-top: 20px; padding: 10px 20px; background: #00ffff;
-            color: #000; border: none; border-radius: 5px; cursor: pointer;
-        ">Fechar</button>
-    `;
+    if (project.title.includes('Game Legends')) {
+        const siteImages = project.images.filter(img => img.includes('site'));
+        const appImages = project.images.filter(img => img.includes('app'));
+        
+        content.innerHTML = `
+            <h2 style="color: #00ffff; margin-bottom: 20px;">${project.title}</h2>
+            <div style="color: #fff; text-align: left; margin-bottom: 30px; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="margin-bottom: 20px;">Game Legends é uma plataforma web e mobile criada para apoiar e dar visibilidade a desenvolvedores independentes de jogos, especialmente iniciantes. O projeto conecta criadores e jogadores em um ambiente colaborativo, permitindo a publicação de jogos, avaliações gratuitas, feedbacks da comunidade e um sistema de doações diretas para financiar projetos em desenvolvimento.</p>
+                
+                <p style="margin-bottom: 20px;">Desenvolvida com arquitetura moderna e escalável, a plataforma integra frontend responsivo, backend em Spring Boot, API RESTful e aplicação mobile em Flutter, garantindo segurança, usabilidade e consistência de dados entre web e mobile. O sistema conta com autenticação segura, diferentes níveis de acesso (cliente, desenvolvedor e administrador), moderação de conteúdo, filtros avançados de busca e controle de avaliações.</p>
+                
+                <p style="margin-bottom: 20px;">Além do aspecto técnico, a Game Legends possui um forte viés social, promovendo inclusão, inovação e democratização no mercado de games, alinhando-se aos Objetivos de Desenvolvimento Sustentável (ODS 9). O projeto busca reduzir barreiras enfrentadas por desenvolvedores indie e fortalecer a relação entre quem cria e quem joga.</p>
+                
+                <p style="color: #00ffff; font-weight: bold; margin-top: 30px;">Algumas fotos do projeto:</p>
+            </div>
+            <h3 style="color: #fff; margin: 20px 0 10px 0;">🌐 Site</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                ${siteImages.map(img => `
+                    <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="Site Game Legends">
+                `).join('')}
+            </div>
+            <h3 style="color: #fff; margin: 20px 0 10px 0;">📱 App</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                ${appImages.map(img => `
+                    <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="App Game Legends">
+                `).join('')}
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()" style="
+                margin-top: 20px; padding: 10px 20px; background: #00ffff;
+                color: #000; border: none; border-radius: 5px; cursor: pointer;
+            ">Fechar</button>
+        `;
+    } else if (project.title.includes('Meu Cinema')) {
+        content.innerHTML = `
+            <h2 style="color: #00ffff; margin-bottom: 20px;">${project.title}</h2>
+            <div style="color: #fff; text-align: left; margin-bottom: 30px; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="margin-bottom: 20px;">Meu Cinema é um catálogo pessoal simples e intuitivo onde organizo filmes, séries e animes que gosto ou pretendo assistir. O projeto foi desenvolvido com foco na experiência do usuário, oferecendo uma interface limpa e moderna para navegar pelo conteúdo.</p>
+                
+                <p style="margin-bottom: 20px;">A aplicação permite visualizar detalhes dos títulos, incluindo sinopses, avaliações e informações técnicas. Com design responsivo e navegação fluida, o catálogo oferece uma experiência agradável tanto em dispositivos móveis quanto desktop.</p>
+                
+                <p style="color: #00ffff; font-weight: bold; margin-top: 30px;">Capturas de tela do projeto:</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                ${project.images.map(img => `
+                    <img src="${img}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,255,255,0.3);" alt="Meu Cinema">
+                `).join('')}
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()" style="
+                margin-top: 20px; padding: 10px 20px; background: #00ffff;
+                color: #000; border: none; border-radius: 5px; cursor: pointer;
+            ">Fechar</button>
+        `;
+    }
     
     modal.appendChild(content);
     modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
